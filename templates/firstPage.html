@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="col-md-8">
+        <div class="form-group">
+            <label for="usertype">Choose Service Provider or Service Receiver</label>
+            <button class="btn btn-primary form-control"><span class="glyphicon glyphicon-log-in"></span>Service Receiver</button>
+        </div>
+    </div>
+</form>
+<form method="POST" action="{% url 'providerLogin' %}">
+    {% csrf_token %}
+    <div class="col-md-8">
+        <div class="form-group">
+            <button class="btn btn-primary form-control"><span class="glyphicon glyphicon-log-in"></span>Service Provider</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
