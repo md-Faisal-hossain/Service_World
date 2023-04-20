@@ -14,10 +14,9 @@
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        <a style="text-decoration: none;" href="{% url 'login' %}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          <a style="text-decoration: none;" href="{% url 'login' %}">Logout
-        </button></a>
+          <a style="text-decoration: none;" href="{% url 'login' %}">Logout</a>
+        </button>
       </form>
     </div>
   </nav>
@@ -29,14 +28,6 @@
 <table class="table">
   <thead class="thead-light">
     <tr>
-      <th scope="col">User ID</th>
-      <th scope="col">{{member.id}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Username</th>
-      <th scope="col">{{member.username}}</th>
-    </tr>
-    <tr>
       <th scope="col">First Name</th>
       <th scope="col">{{member.firstname}}</th>
     </tr>
@@ -45,16 +36,31 @@
       <th scope="col">{{member.lastname}}</th>
     </tr>
     <tr>
-      <th scope="col">Email</th>
-      <th scope="col">{{member.email}}</th>
+      <th scope="col">Category</th>
+      <th scope="col">{{member.category}}</th>
     </tr>
     <tr>
-      <th scope="col">Password</th>
-      <th scope="col">{{member.password}}</th>
+      <th scope="col">Experience</th>
+      <th scope="col">{{member.experience}}</th>
+    </tr>
+    <tr>
+      <th scope="col">Phone</th>
+      <th scope="col">{{member.phone}}</th>
+    </tr>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">{{member.email}}</th>
     </tr>
   </thead>
   </tbody>
 </table>
+
+<div class="form-group">
+  <form action="{% url 'connection' %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-primary form-control" type="submit" name="connection" value="{{member.id}}"><strong>Connect</strong></button>
+  </form>
+</div>
 
 
 {% endblock %}

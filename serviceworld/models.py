@@ -8,6 +8,8 @@ class Member(models.Model):
     username=models.CharField(max_length=30)
     password=models.CharField(max_length=12)
     email=models.CharField(max_length=25)
+    lat=models.FloatField()
+    lng=models.FloatField()
 
     def __str__(self):
         return self.firstname + " " + self.lastname
@@ -22,8 +24,14 @@ class ProviderMember(models.Model):
     category=models.CharField(max_length=30)
     experience=models.CharField(max_length=12)
     phone=models.CharField(max_length=25)
+    lat=models.FloatField()
+    lng=models.FloatField()
 
     def __str__(self):
         return self.firstname + " " + self.lastname
     
-    
+
+class ConnectionRequest(models.Model):
+    mid = models.IntegerField()
+    pid = models.IntegerField()
+

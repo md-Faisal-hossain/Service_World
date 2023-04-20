@@ -12,8 +12,6 @@
         
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         <a style="text-decoration: none;" href="{% url 'login' %}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           <a style="text-decoration: none;" href="{% url 'login' %}">Logout
@@ -45,13 +43,25 @@
       <th scope="col">{{member.lastname}}</th>
     </tr>
     <tr>
+        <th scope="col">Category</th>
+        <th scope="col">{{member.category}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Experience</th>
+        <th scope="col">{{member.experience}}</th>
+      </tr>
+    <tr>
       <th scope="col">Email</th>
       <th scope="col">{{member.email}}</th>
     </tr>
     <tr>
-      <th scope="col">Password</th>
-      <th scope="col">{{member.password}}</th>
-    </tr>
+        <th scope="col">Password</th>
+        <th scope="col">{{member.password}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Phone</th>
+        <th scope="col">{{member.phone}}</th>
+      </tr>
   </thead>
   </tbody>
 </table>

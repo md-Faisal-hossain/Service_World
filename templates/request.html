@@ -12,8 +12,6 @@
         
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         <a style="text-decoration: none;" href="{% url 'login' %}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           <a style="text-decoration: none;" href="{% url 'login' %}">Logout
@@ -23,38 +21,18 @@
   </nav>
 {% endblock %}
 {% block name %}
-    <center><h2>Profile</h2></center>
+    <center><h2>Connect Request</h2></center>
 {% endblock %}
 {% block body %}
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">User ID</th>
-      <th scope="col">{{member.id}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Username</th>
-      <th scope="col">{{member.username}}</th>
-    </tr>
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">{{member.firstname}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Last Name</th>
-      <th scope="col">{{member.lastname}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Email</th>
-      <th scope="col">{{member.email}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Password</th>
-      <th scope="col">{{member.password}}</th>
-    </tr>
-  </thead>
-  </tbody>
-</table>
+{% for mes in m %}
+    {% if mes.pid == pmember.id %}
+      <div><h4>You have connect request. </h4>
+        <form action="{% url 'providerAccept' %}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="accept" value="{{mes.mid}}">Accept</button>
+        </form></div>
+    {% endif %}
+{% endfor %}
 
 
 {% endblock %}
