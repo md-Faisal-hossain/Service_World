@@ -7,12 +7,18 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
     <style>
         *{
-            padding: 2px;
+            padding: 2px 0;
             margin: auto;
             box-sizing: border-box;
+        }
+        .well{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2px;
         }
         body{
             background-color: darkgray;
@@ -36,10 +42,10 @@
     -->
     <div class="col-md-3"></div>
     <div class="col-md-6 well" style="background-color: rgb(252, 247, 247)">
-        <h3 class="text-primary">
+        <h2 class="text-primary">
           {% block name %}
           <center>SERVICE WORLD</center>
-          {% endblock %}</h3>
+          {% endblock %}</h2>
         <hr style="border-top:1px dotted #000;"/>
         {% block body %}
         {% endblock %}
