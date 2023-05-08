@@ -14,6 +14,13 @@
             margin: auto;
             box-sizing: border-box;
         }
+        .btn{
+            padding: 2px;
+        }
+        .atn{
+            padding: 0;
+            margin: 0;
+        }
         .well{
             position: absolute;
             top: 45%;
@@ -48,7 +55,7 @@
             {% csrf_token %}
             <div class="col-md-8">
                     <label for="usertype"><h5 style="text-align: center;">Choose Service Provider or Service Receiver</h5></label>
-                <div class="form-group" style="display: flex;
+                <div class="form-group atn" style="display: flex;
                     justify-content: center;
                     align-items: center;">
                     <button class="btn btn-primary form-control" style="height: 50px;width: 300px;"><span class="glyphicon glyphicon-log-in"></span><h5>Service Receiver</h5></button>
@@ -58,7 +65,7 @@
         <form method="POST" action="{% url 'providerLogin' %}">
             {% csrf_token %}
             <div class="col-md-8">
-                <div class="form-group" style="display: flex;
+                <div class="form-group btn" style="display: flex;
                 justify-content: center;
                 align-items: center;">
                     <button class="btn btn-primary form-control" style="height: 50px;width: 300px;"><span class="glyphicon glyphicon-log-in"></span><h5>Service Provider</h5></button>
