@@ -12,7 +12,7 @@ import json
 # Create your views here.
 
 def index(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.FILES.get('img'):
         send_url = "http://api.ipstack.com/check?access_key=bf03f5d6cb8843da287d2c1e40714ba1"
         geo_req = requests.get(send_url)
         print(geo_req)
@@ -21,7 +21,7 @@ def index(request):
         longitude = geo_json['longitude']
         member = Member(username=request.POST['username'], 
                         password=request.POST['password'],  firstname=request.POST['firstname'], 
-                        lastname=request.POST['lastname'],email=request.POST['email'],lat=latitude,lng=longitude)
+                        lastname=request.POST['lastname'],email=request.POST['email'],lat=latitude,lng=longitude,image=request.FILES['img'])
         member.save()
         return redirect('/login')
     else:
@@ -38,7 +38,7 @@ def providerIndex(request):
         member = ProviderMember(username=request.POST['username'], 
                         password=request.POST['password'],  firstname=request.POST['firstname'], 
                         lastname=request.POST['lastname'],email=request.POST['email'],category=request.POST['category'],
-                        phone=request.POST['phone'],experience=request.POST['experience'],lat=latitude,lng=longitude)
+                        phone=request.POST['phone'],experience=request.POST['experience'],lat=latitude,lng=longitude,image=request.FILES['img'])
         member.save()
         return redirect('/providerLogin')
     else:
@@ -127,6 +127,7 @@ def map(request):
                         <!DOCTYPE html>
                         <html>
                         <body>
+                        <img style="border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 150px;display: block;margin-left: auto;margin-right: auto;" src="{ pmember.image.url }" alt="Image">
                         <table class="table">
                         <thead class="thead-light">
                         <tr>
@@ -238,6 +239,7 @@ def searchProvider(request):
                                 <!DOCTYPE html>
                                 <html>
                                 <body>
+                                <img style="border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 150px;display: block;margin-left: auto;margin-right: auto;" src="{ pmember.image.url }" alt="Image">
                                 <table class="table">
                                 <thead class="thead-light">
                                 <tr>

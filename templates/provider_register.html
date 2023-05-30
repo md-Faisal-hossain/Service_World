@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block body %}
-<form action="{% url 'providerIndex' %}" method="POST">
+<form action="{% url 'providerIndex' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="col-md-8">
         <div class="form-group">
@@ -50,7 +50,12 @@
                     </div>
                   </div>
               </div>
-
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <label for="img">Select image:</label>
+                  <input type="file" id="img" name="img" accept="image/*">
+                </div>
+              </div>
 
         </div>
         <br />

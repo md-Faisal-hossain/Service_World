@@ -10,6 +10,7 @@ class Member(models.Model):
     email=models.CharField(max_length=25)
     lat=models.FloatField()
     lng=models.FloatField()
+    image = models.ImageField(upload_to='images')  
 
     def __str__(self):
         return self.firstname + " " + self.lastname
@@ -26,6 +27,7 @@ class ProviderMember(models.Model):
     phone=models.CharField(max_length=25)
     lat=models.FloatField()
     lng=models.FloatField()
+    image = models.ImageField(upload_to='images')
 
     def __str__(self):
         return self.firstname + " " + self.lastname
