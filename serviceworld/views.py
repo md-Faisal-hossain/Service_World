@@ -5,6 +5,8 @@ import folium
 from django.db import models
 import requests
 import json
+import os
+from django.contrib import messages
 
 
 
@@ -52,6 +54,20 @@ def login(request):
 
 def register(request):
     return render(request, 'register.html')
+
+def edit(request):
+    member=val() 
+    context = {
+                    'm': member,
+                }
+    return render(request, 'edit.html',context)
+
+def providerEdit(request):
+    member=pval() 
+    context = {
+                    'm': member,
+                }
+    return render(request, 'providerEdit.html',context)
 
 def providerLogin(request):
     return render(request, 'provider_login.html')
@@ -173,7 +189,41 @@ def map(request):
         'member': member,
         }
     return render(request, 'map.html', context)
-        
+
+def updateProfile(request):
+    member = val()
+    if request.method == "POST":
+        if len(request.FILES) != 0:
+            if len(member.image) > 0:
+                os.remove(member.image.path)
+            member.image = request.FILES['image']
+        member.firstname = request.POST.get('firstname')
+        member.lastname = request.POST.get('lastname')
+        member.email = request.POST.get('email')
+        member.password = request.POST.get('password')
+        member.save()
+        messages.success(request, "Product Updated Successfully")
+        # def val():
+        #         return updatedMember
+        return render(request, 'login.html')
+
+def updateProviderProfile(request):
+    member = pval()
+    if request.method == "POST":
+        if len(request.FILES) != 0:
+            if len(member.image) > 0:
+                os.remove(member.image.path)
+            member.image = request.FILES['image']
+        member.firstname = request.POST.get('firstname')
+        member.lastname = request.POST.get('lastname')
+        member.email = request.POST.get('email')
+        member.phone = request.POST.get('phone')
+        member.experience = request.POST.get('experience')
+        member.password = request.POST.get('password')
+        member.save()
+        messages.success(request, "Product Updated Successfully")
+        return render(request, 'provider_login.html')
+
 def connection(request):
     if request.method == 'POST':
         Pmember = ProviderMember.objects.get(id = request.POST['connection'])
