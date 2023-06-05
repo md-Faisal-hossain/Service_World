@@ -24,7 +24,7 @@
 {% endblock %}
 {% block body %}
 <img style="border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 150px;display: block;margin-left: auto;margin-right: auto;" src="{{ member.image.url }}" alt="Image">
-<a href="{% url 'edit' %}"><button class="btn btn-primary form-control"><span class="glyphicon glyphicon-log-in"></span> Edit</button></a>
+<a href="{% url 'providerEdit' %}"><button class="btn btn-primary form-control"><span class="glyphicon glyphicon-log-in"></span> Edit</button></a>
 <table class="table">
   <thead class="thead-light">
     <tr>
@@ -44,13 +44,25 @@
       <th scope="col">{{member.lastname}}</th>
     </tr>
     <tr>
+        <th scope="col">Category</th>
+        <th scope="col">{{member.category}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Experience</th>
+        <th scope="col">{{member.experience}}</th>
+      </tr>
+    <tr>
       <th scope="col">Email</th>
       <th scope="col">{{member.email}}</th>
     </tr>
     <tr>
-      <th scope="col">Password</th>
-      <th scope="col">{{member.password}}</th>
-    </tr>
+        <th scope="col">Password</th>
+        <th scope="col">{{member.password}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Phone</th>
+        <th scope="col">{{member.phone}}</th>
+      </tr>
   </thead>
   </tbody>
 </table>

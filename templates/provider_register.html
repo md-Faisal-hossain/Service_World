@@ -1,21 +1,17 @@
 {% extends 'base.html' %}
 {% block body %}
-<form action="{% url 'providerIndex' %}" method="POST">
+<form action="{% url 'providerIndex' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="col-md-8">
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-6">
-                  <div class="form-label-group">
                     <label for="firstname">First Name</label>
                     <input type="text" id="firstname" class="form-control" name="firstname" required="required" autofocus="autofocus">
-                  </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-label-group">
                     <label for="lastname">Last Name</label>
                     <input type="text" id="lastname" class="form-control" name="lastname" required="required">
-                  </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-label-group">
@@ -54,11 +50,16 @@
                     </div>
                   </div>
               </div>
-
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <label for="img">Select image:</label>
+                  <input type="file" id="img" name="img" accept="image/*">
+                </div>
+              </div>
 
         </div>
         <br />
-        <div class="form-group">
+        <div class="form-label-group">
             <button type="submit" class="btn btn-primary form-control"><span class="glyphicon glyphicon-save"></span> Submit</button>
         </div>
     </div>
